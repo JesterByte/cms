@@ -12,7 +12,7 @@
 <title><?php echo generateTitle($pageTitle); ?></title>
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-<link rel="shortcut icon" href="../assets/img/green_haven_memorial_park_logo.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../assets/brand/green_haven_memorial_park_logo.ico" type="image/x-icon">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">

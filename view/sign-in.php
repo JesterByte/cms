@@ -10,7 +10,7 @@
       
       <div class="row">
         <div class="col d-flex justify-content-center">
-          <img src="../assets/img/green_haven_memorial_park_logo.png" alt="" width="300" height="150">
+          <img src="../assets/brand/green_haven_memorial_park_logo.png" alt="" width="300" height="150">
         </div>
       </div>
       <h1 class="h3 my-3 fw-normal text-center">Green Haven <br> Memorial Park</h1>
