@@ -1,0 +1,41 @@
+<!-- Sign Out Modal -->
+<div class="modal fade" id="reservationVerificationModal" tabindex="-1" aria-labelledby="reservationVerificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="reservationVerificationModalLabel">Verification Confirmation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="confirmVerification">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modalBody = document.getElementById("modalBody");
+    const lotType = document.getElementById("lotType");
+    
+    // Initial check to ensure modal starts with the correct message
+    if (lotType.value) {
+        modalBody.textContent = "Are you sure that this reserved lot is classified as a " + lotType.value + " lot?";
+    }
+
+    // Update modal body when the lot type changes
+    lotType.addEventListener("change", function() {
+        modalBody.textContent = "Are you sure that this reserved lot is classified as a " + this.value + " lot?";
+    });
+</script>
+
+<script>
+    const verifyForm = document.getElementById("verifyForm");
+    const submitButton = document.getElementById("confirmVerification");
+
+    submitButton.addEventListener("click", function() {
+        verifyForm.submit();
+    });
+</script>

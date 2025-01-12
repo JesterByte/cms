@@ -1,4 +1,3 @@
 <?php
-include_once "includes/functions.php";
-
-redirect("view/sign-in.php");
+require_once "utils/helpers.php";
+serverRedirect("sign-in");
