@@ -16,7 +16,7 @@
       rowData(formatToPeso($phasePricingRow["lot_price"]));
       rowData(formatToPeso($phasePricingRow["total_purchase_price"]));
       rowData(formatToPeso($phasePricingRow["cash_sale_10_discount"]));
-      rowData(formatToPeso($phasePricingRow["cash_sale_5_discount"]));
+      rowData(formatToPeso($phasePricingRow["6_months_5_discount"]));
       rowData(formatToPeso($phasePricingRow["down_payment_20"]));
       rowData(formatToPeso($phasePricingRow["balance"]));
       rowData(formatToPeso($phasePricingRow["monthly_amortization_1yr"]));
