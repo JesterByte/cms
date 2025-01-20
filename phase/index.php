@@ -16,7 +16,7 @@
       rowData(formatToPeso($phasePricingRow["lot_price"]));
       rowData(formatToPeso($phasePricingRow["total_purchase_price"]));
       rowData(formatToPeso($phasePricingRow["cash_sale_10_discount"]));
-      rowData(formatToPeso($phasePricingRow["cash_sale_5_discount"]));
+      rowData(formatToPeso($phasePricingRow["6_months_5_discount"]));
       rowData(formatToPeso($phasePricingRow["down_payment_20"]));
       rowData(formatToPeso($phasePricingRow["balance"]));
       rowData(formatToPeso($phasePricingRow["monthly_amortization_1yr"]));
@@ -62,7 +62,7 @@
                 This week
               </button>
             </div> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatePricingModal"><i class="bi bi-arrow-repeat"></i> Update Pricing</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatePhasePricingModal"><i class="bi bi-arrow-repeat"></i> Update Pricing</button>
           </div>
 
           <!-- DataTable -->

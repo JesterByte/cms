@@ -49,6 +49,18 @@ function isActivePage($pageTitle, $currentPage) {
   echo $pageTitle == $currentPage ? "active" : "";
 }
 
+function isAriaCurrentPage($pageTitle, $currentPage) {
+  return $pageTitle == $currentPage ? 'aria-current="page"' : "";
+}
+
+function isActiveLink($type) {
+  return isset($_GET["type"]) && $_GET["type"] == $type ? "active" : "";
+}
+
+function isAriaCurrentPageLink($type) {
+  return isset($_GET["type"]) && $_GET["type"] == $type ? 'aria-current="page"' : "";
+}
+
 function escapeOutput($output) {
   return htmlspecialchars($output, ENT_QUOTES, 'UTF-8');
 }
@@ -82,11 +94,11 @@ function showReservationRequestsBadge($pendingRequests) {
 
 function displayPhaseLocation($location) {
   // Use a regular expression to parse the input
-  if (preg_match('/^P(\d+)-C(\d+)G(\d+)$/', $location, $matches)) {
+  if (preg_match('/^P(\d+)-C(\d+)L(\d+)$/', $location, $matches)) {
     $phase = $matches[1];
     $column = $matches[2];
     $grave = $matches[3];
-    return "Phase $phase, Column $column, Grave $grave";
+    return "Phase $phase, Column $column, Lot $grave";
   } else {
     return "Invalid location format";
   }

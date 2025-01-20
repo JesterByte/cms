@@ -5,10 +5,10 @@ require_once "../utils/autoload.php";
 
 autoloadUtils(__DIR__ . "/../utils");
 
-if (!empty($_POST["grave_id"]) && !empty($_POST["lot_type"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $graveId = $_POST["grave_id"];
-    if (!validateGraveId($graveId)) {
-        echo "Invalid grave id";
+if (!empty($_POST["lot_id"]) && !empty($_POST["lot_type"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+    $lotId = $_POST["lot_id"];
+    if (!validateLotId($lotId)) {
+        echo "Invalid lot id";
         exit;
     }
 
@@ -18,14 +18,14 @@ if (!empty($_POST["grave_id"]) && !empty($_POST["lot_type"]) && $_SERVER["REQUES
         exit;
     }
 
-    $reservationStatus = "Active";
+    $reservationStatus = "Verified";
 
-    updateReservation($connection, $lotType, $reservationStatus, $graveId);
+    updateReservation($connection, $lotType, $reservationStatus, $lotId);
 }
 
-function updateReservation($connection, $lotType, $reservationStatus, $graveId) {
+function updateReservation($connection, $lotType, $reservationStatus, $lotId) {
     $updateReservation = mysqli_prepare($connection, "UPDATE lot_reservations SET lot_type = ?, reservation_status = ? WHERE reserved_lot = ?");
-    mysqli_stmt_bind_param($updateReservation, "sss", $lotType, $reservationStatus, $graveId);
+    mysqli_stmt_bind_param($updateReservation, "sss", $lotType, $reservationStatus, $lotId);
     if (mysqli_stmt_execute($updateReservation)) {
         $_SESSION["lot_reservation_updated"] = true;
         serverRedirect("../reservation-requests/?type=lot");

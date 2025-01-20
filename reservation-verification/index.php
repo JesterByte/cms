@@ -7,7 +7,7 @@ if (!isset($_SESSION["user_id"])) {
     serverRedirect("../");
 }
 
-$graveId = isset($_GET['grave_id']) ? decodeUrlParameter($_GET['grave_id']) : null;
+$lotId = isset($_GET['lot_id']) ? decodeUrlParameter($_GET['lot_id']) : null;
 
 ?>
 
@@ -61,7 +61,7 @@ $graveId = isset($_GET['grave_id']) ? decodeUrlParameter($_GET['grave_id']) : nu
             <div class="col-md-8">
               <div class="card h-100">
                 <div class="card-header bg-primary text-white">
-                  <h5 class="card-title mb-0">Grave Location</h5>
+                  <h5 class="card-title mb-0">Lot Location</h5>
                 </div>
                 <div class="card-body">
                   <div id="map" class="rounded border" style="min-height: 500px;">
@@ -79,7 +79,7 @@ $graveId = isset($_GET['grave_id']) ? decodeUrlParameter($_GET['grave_id']) : nu
                 </div>
                 <div class="card-body">
                   <form class="needs-validation" novalidate id="verifyForm" method="post" action="../process/process-verify-reservation.php">
-                    <input type="hidden" name="grave_id" value="<?= htmlspecialchars($graveId) ?>">
+                    <input type="hidden" name="lot_id" value="<?= htmlspecialchars($lotId) ?>">
 
                     <!-- Lot Type -->
                     <div class="mb-3">

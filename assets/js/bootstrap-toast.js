@@ -26,7 +26,7 @@ function showToast(message, title = 'Notification', delay = 5000) {
 
     // Create toast body
     const toastBody = document.createElement('div');
-    toastBody.className = 'toast-body text-bg-success';
+    toastBody.className = 'toast-body';
     toastBody.textContent = message;
 
     // Append header and body to toast

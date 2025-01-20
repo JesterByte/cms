@@ -9,13 +9,13 @@
 
   function displayLotReservationsTable($reservationsTable) {
     foreach ($reservationsTable as $reservationRow) {
-      $encodedGraveId = encodeUrlParameter($reservationRow["reserved_lot"]);
+      $encodedLotId = encodeUrlParameter($reservationRow["reserved_lot"]);
 
       startRow();
       rowData($reservationRow["created_at"]);
       rowData($reservationRow["full_name"]);
       rowData($reservationRow["formatted_reserved_lot"]);
-      rowLinkGroup("btn-success", '<i class="bi bi-check"></i>', "Verify", "../reservation-verification/?grave_id=$encodedGraveId", "btn-danger", '<i class="bi bi-x"></i>', "Decline", "#");
+      rowLinkGroup("btn-success", '<i class="bi bi-check"></i>', "Verify", "../reservation-verification/?lot_id=$encodedLotId", "btn-danger", '<i class="bi bi-x"></i>', "Decline", "#");
       endRow();  
 
     }
@@ -50,13 +50,7 @@
     <th>Action</th>';
   }
 
-  function isActiveLink($type) {
-    if (isset($_GET["type"]) && $_GET["type"] == $type) {
-      echo "active";
-    } else {
-      echo "";
-    }
-  }
+
 
   function rowLinkGroup($color1 = "", $icon1 = "", $textContent1 = "", $link1 = "#", $color2 = "", $icon2 = "", $textContent2 = "", $link2 = "#") {
     echo "<td>" . 
@@ -108,8 +102,8 @@
               </button>
             </div> -->
             <div class="btn-group">
-              <a href="?type=lot" class="btn btn-primary <?= isActiveLink("lot") ?>" aria-current="page"><i class="bi bi-square-fill"></i> Lot</a>
-              <a href="?type=burial" class="btn btn-primary <?= isActiveLink("burial"); ?>"><i class="bi bi-umbrella-fill"></i> Burial</a>
+              <a href="?type=lot" class="btn btn-primary <?= isActiveLink("lot") ?>" <?= isAriaCurrentPageLink("lot") ?>><i class="bi bi-square-fill"></i> Lot</a>
+              <a href="?type=burial" class="btn btn-primary <?= isActiveLink("burial"); ?>" <?= isAriaCurrentPageLink("burial") ?>><i class="bi bi-umbrella-fill"></i> Burial</a>
             </div>          
           </div>
 
@@ -161,8 +155,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/modal-autofocus.js"></script>
+    <script src="../assets/js/bootstrap-toast.js"></script>
 
     <?php include_once "../components/modals/modal-sign-out.html"; ?>
+
+    <script>
+      const reservationVerified = <?= echoSessionToast("lot_reservation_updated"); ?>;
+
+      if (reservationVerified === true) {
+        showToast("Reservation verified successfully!", "Operation Complete");
+        unsetToast();
+      }
+    </script>
 
     <script>
       $(document).ready(function() {
@@ -203,70 +207,6 @@
         });
       });
     </script>
-    
-    <script>
-        $(document).ready(function() {
-            var map = L.map('map').setView([14.871318, 120.976566], 18); // Use your latitude and longitude
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 20
-            }).addTo(map);
-
-            // Function to draw rectangles for graves
-            function drawGrave(grave) {
-                const graveWidth = 0.000009; // Approx. 1 meter in longitude degrees
-                const graveHeight = 0.000018; // Approx. 2 meters in latitude degrees
-
-                // Calculate end latitude and longitude based on starting coordinates and grave size
-                var startLat = grave.latitude_start;
-                var startLng = grave.longitude_start;
-                var endLat = grave.latitude_end;
-                var endLng = grave.longitude_end;
-
-                // Determine the color based on grave status
-                let color;
-                switch (grave.status) {
-                    case 'Available':
-                        color = 'green';
-                        break;
-                    case 'Reserved':
-                        color = 'yellow';
-                        break;
-                    case 'Sold':
-                        color = 'red';
-                        break;
-                    case 'Sold and Occupied':
-                        color = 'gray';
-                        break;
-                    default:
-                        color = 'blue'; // Default color for unknown status
-                }
-
-                // Create a rectangle (polygon) for the grave lot
-                var rectangle = L.rectangle([[startLat, startLng], [endLat, endLng]], {
-                    color: color,
-                    weight: 1,
-                    fillOpacity: 0.5
-                }).addTo(map);
-
-                // Add a popup to the rectangle showing the status
-                rectangle.bindPopup("<b>Status:</b> " + grave.status);
-            }
-
-            // Fetch grave data from PHP file (using AJAX)
-            fetch('../content/reservation-requests-map.php')
-                .then(response => response.json())
-                .then(data => {
-                    // Iterate through graves and draw rectangles
-                    data.forEach(grave => {
-                        drawGrave(grave);
-                    });
-                })
-                .catch(error => console.error('Error fetching grave data:', error));
-
-        });
-    </script>
-
+  
   </body>
 </html>

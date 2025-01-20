@@ -9,29 +9,29 @@
     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Dashboard") ?>" aria-current="page" href="../dashboard/">
+          <a class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Dashboard") ?>" href="../dashboard/" <?= isAriaCurrentPage($pageTitle, "Dashboard") ?>>
             <i class="bi bi-house<?= fillIcon($pageTitle, "Dashboard") ?>"></i> Dashboard
           </a>
         </li>
         <?php $lotPricingList = ["Phase Pricing", "Estate Pricing"]; ?>
         <li class="nav-item">
           <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#lotPricingSubmenu" role="button" aria-expanded="<?= isPageTitleInList($pageTitle, $lotPricingList) ? "true" : "false"; ?>" aria-controls="lotPricingSubmenu">
-            <i class="bi bi-tag<?= isPageTitleInList($pageTitle, $lotPricingList) ? "-fill" : ""; ?>"></i> Lot Pricing <i class="bi bi-caret-down<?= isPageTitleInList($pageTitle, $lotPricingList) ? "-fill" : ""; ?>"></i>
+            <i class="bi bi-tag<?= isPageTitleInList($pageTitle, $lotPricingList) ? "-fill" : ""; ?>"></i> Set Pricing <i class="bi bi-caret-down<?= isPageTitleInList($pageTitle, $lotPricingList) ? "-fill" : ""; ?>"></i>
           </a>
           <div class="collapse <?= isPageTitleInList($pageTitle, $lotPricingList) ? "show" : ""; ?>" id="lotPricingSubmenu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="../phase" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Phase Pricing") ?>"><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Phase Pricing") ?>"></i> Phase Pricing</a></li>
-              <li><a href="../estate" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Estate Pricing") ?>"><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Estate Pricing") ?>"></i> Estate Pricing</a></li>
+              <li><a href="../phase" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Phase Pricing") ?>" <?= isAriaCurrentPage($pageTitle, "Phase Pricing") ?>><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Phase Pricing") ?>"></i> Phase Pricing</a></li>
+              <li><a href="../estate" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Estate Pricing") ?>" <?= isAriaCurrentPage($pageTitle, "Estate Pricing") ?>><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Estate Pricing") ?>"></i> Estate Pricing</a></li>
             </ul>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Customers") ?>" href="../customers/">
+          <a class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Customers") ?>" href="../customers/" <?= isAriaCurrentPage($pageTitle, "Customers") ?>>
             <i class="bi bi-people<?= fillIcon($pageTitle, "Customers") ?>"></i> Customers
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Burial Records") ?>" href="../burial-records/">
+          <a class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Burial Records") ?>" href="../burial-records/" <?= isAriaCurrentPage($pageTitle, "Burial Records") ?>>
             <i class="bi bi-collection<?= fillIcon($pageTitle, "Burial Records") ?>"></i> Burial Records
           </a>
         </li>
@@ -43,9 +43,9 @@
           <div class="collapse <?= isPageTitleInList($pageTitle, $reservationsList) ? "show" : ""; ?>" id="reservationsSubmenu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <?php $reservationRequestsGroup = ["Reservation Requests", "Reservation Verification"]; ?>
-              <li><a href="../reservation-requests/?type=lot" class="nav-link d-flex align-items-center gap-2 <?= isPageTitleInList($pageTitle, $reservationRequestsGroup) ?>"><i class="bi bi-caret-right<?= isPageTitleInList($pageTitle, $reservationRequestsGroup) ? "-fill" : ""; ?>"></i> Reservation Requests <?= showReservationRequestsBadge($pendingRequests); ?></a></li>
+              <li><a href="../reservation-requests/?type=lot" class="nav-link d-flex align-items-center gap-2 <?= isPageTitleInList($pageTitle, $reservationRequestsGroup) ?>" <?= isAriaCurrentPage($pageTitle, "Lot Reservation") ?>><i class="bi bi-caret-right<?= isPageTitleInList($pageTitle, $reservationRequestsGroup) ? "-fill" : ""; ?>"></i> Reservation Requests <?= showReservationRequestsBadge($pendingRequests); ?></a></li>
               <li><a href="../reservations-lot" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Lot Reservation") ?>"><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Lot Reservations") ?>"></i> Lot Reservations</a></li>
-              <li><a href="../reservations-burial" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Burial Reservation") ?>"><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Burial Reservations") ?>"></i> Burial Reservations</a></li>
+              <li><a href="../reservations-burial" class="nav-link d-flex align-items-center gap-2 <?= isActivePage($pageTitle, "Burial Reservation") ?>" <?= isAriaCurrentPage($pageTitle, "Burial Reservation") ?>><i class="bi bi-caret-right<?= fillIcon($pageTitle, "Burial Reservations") ?>"></i> Burial Reservations</a></li>
             </ul>
           </div>
         </li>

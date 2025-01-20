@@ -20,8 +20,8 @@ function validateEstate($estate) {
     return in_array($estate, ["Estate A", "Estate B", "Estate C"]);
 }
 
-function validateGraveId($graveId) {
-    return preg_match('/^P\d+-C\d+G\d+$/', $graveId);
+function validateLotId($lotId) {
+    return preg_match('/^P\d+-C\d+L\d+$/', $lotId);
 }
 
 function isGet($parameter, $value) {

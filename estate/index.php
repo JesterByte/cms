@@ -16,7 +16,7 @@
       rowData(formatToPeso($estatePricingRow["lot_price"]));
       rowData(formatToPeso($estatePricingRow["total_purchase_price"]));
       rowData(formatToPeso($estatePricingRow["cash_sale_10_discount"]));
-      rowData(formatToPeso($estatePricingRow["cash_sale_5_discount"]));
+      rowData(formatToPeso($estatePricingRow["6_months_5_discount"]));
       rowData(formatToPeso($estatePricingRow["down_payment_20"]));
       rowData(formatToPeso($estatePricingRow["balance"]));
       rowData(formatToPeso($estatePricingRow["monthly_amortization_1yr"]));
@@ -126,6 +126,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/modal-autofocus.js"></script>  
+    <script src="../assets/js/bootstrap-toast.js"></script>
+
 
     <?php 
       include_once "../components/modals/modal-sign-out.html"; 

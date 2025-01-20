@@ -5,7 +5,9 @@ session_start();
 //     unset($_SESSION["price-updated"]);
 // }
 
-unsetToast("price_updated");
+unsetToast("phase_price_updated");
+unsetToast("estate_price_updated");
+unsetToast("lot_reservation_updated");
 
 function unsetToast($sessionKey) {
     if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] === true) {
