@@ -112,9 +112,9 @@ function decodeUrlParameter($parameterValue) {
   return urldecode(base64_decode($parameterValue));
 }
 
-function extractPhaseNumber($graveId) {
+function extractPhaseNumber($lotId) {
   // Use a regular expression to find the number after 'P'
-  if (preg_match('/P(\d+)-/', $graveId, $matches)) {
+  if (preg_match('/P(\d+)-/', $lotId, $matches)) {
       return $matches[1]; // Return the first captured group (the number after 'P')
   }
   return null; // Return null if the pattern doesn't match
